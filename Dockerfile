@@ -10,11 +10,11 @@ WORKDIR /app
 RUN pip install "poetry==$POETRY_VERSION"
 
 # Copy pyproject and lock file
-COPY pyproject.toml poetry.lock* ./
+COPY ./ ./
 
 # Install dependencies in a virtualenv inside /venv
 RUN poetry config virtualenvs.create false \
-    && poetry install --only main --no-interaction --no-ansi
+    && poetry install --no-interaction --no-ansi
 
 # Copy actual source code
 COPY src ./src
