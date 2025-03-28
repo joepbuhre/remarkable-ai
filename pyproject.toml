@@ -5,9 +5,9 @@ description = "Remarkable AI processor"
 authors = ["Joep Buhre <you@example.com>"]
 readme = "README.md"
 packages = [{ include = "remarkable_ai", from = "src" }]
-requires-python = ">=3.12,<4.0"
 
 [tool.poetry.dependencies]
+python = ">=3.12,<4.0"
 fastapi = "^0.115.12"
 uvicorn = "^0.34.0"
 imap-tools = "^1.10.0"
