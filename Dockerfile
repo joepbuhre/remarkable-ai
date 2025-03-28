@@ -3,7 +3,7 @@
 # ---- Base build stage ----
 FROM python:3.12-slim AS builder
 
-ENV POETRY_VERSION=1.8.2
+ENV POETRY_VERSION=2.1.1
 WORKDIR /app
 
 # Install Poetry
