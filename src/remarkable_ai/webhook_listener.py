@@ -89,9 +89,9 @@ async def email_fetch():
 
         filename = os.path.splitext(email.attachment.filename)[0]
         
-        analyzer.output_docx = f"tmp\\{str(email.email_id)}\\{filename}.docx"
-        analyzer.output_pdf = f"tmp\\{str(email.email_id)}\\{filename}.pdf"
-        analyzer.output_md = f"tmp\\{str(email.email_id)}\\{filename}.md"
+        analyzer.output_docx = os.path.join("tmp", str(email.email_id), f"{filename}.docx")
+        analyzer.output_pdf = os.path.join("tmp", str(email.email_id), f"{filename}.pdf")
+        analyzer.output_md = os.path.join("tmp", str(email.email_id), f"{filename}.md")
 
         md_file = analyzer.analyze_image(email.attachment, email.body)
         docx_file = analyzer.convert_to_docx(md_file)
@@ -100,7 +100,7 @@ async def email_fetch():
 
         
         # build attachments
-        attachment_list = load_folder_as_attachments(f"tmp\\{str(email.email_id)}")
+        attachment_list = load_folder_as_attachments(os.path.join("tmp", str(email.email_id)))
         reply_to_email(
             email,
             attachments=attachment_list
